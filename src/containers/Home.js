@@ -6,13 +6,16 @@ class Home extends React.Component {
     state={
         gardentemplates:[],
         gardens:{2:0},
-
+        newGarden:{
+            name:"",
+            user_id: this.props.currentUser.id
+        }
     }
+
 
     gardentemplateurl='http://localhost:3000/api/v1/gardentemplates'
 
     gardenurl='http://localhost:3000/api/v1/gardens'
-
 
     componentDidMount(){
         fetch(this.gardentemplateurl)
@@ -26,10 +29,9 @@ class Home extends React.Component {
 
     
     render(){
-     
         return (
             <div className="Home">
-                <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser}/>
+                <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser} />
             </div>
           );
     }
