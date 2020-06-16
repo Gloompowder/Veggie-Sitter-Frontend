@@ -5,7 +5,8 @@ class Home extends React.Component {
 
     state={
         gardentemplates:[],
-        gardens:{2:0}
+        gardens:{2:0},
+
     }
 
     gardentemplateurl='http://localhost:3000/api/v1/gardentemplates'
@@ -25,7 +26,7 @@ class Home extends React.Component {
 
     
     render(){
-        console.log(this.state)
+     
         return (
             <div className="Home">
                 <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser}/>
