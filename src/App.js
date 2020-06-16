@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Home from './containers/Home'
 import PlantShop from './containers/PlantShop'
+import Nav from './components/NavBar'
 import { Route, Switch} from 'react-router-dom'
 
 class App extends React.Component {
@@ -28,6 +29,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <Nav> </Nav>
         <Switch>
           <Route exact path="/" render={routerProps =><Home {...routerProps} currentUser={this.state.currentUser}/>}/>
           <Route path= "/plants" render= {routerProps => <PlantShop  {...routerProps} plants = {this.state.plants} />}/>
