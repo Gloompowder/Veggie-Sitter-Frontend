@@ -1,18 +1,20 @@
 import React from 'react'
+import { Redirect } from "react-router-dom"
 
 class GardenCard extends React.Component {
     state={
         newGarden:{
             name:"",
             user_id: this.props.currentUser.id
-        }
+        },
+        redirect: null
     }
 
     handleChange=(e)=>{
         e.persist()
         e.preventDefault()
         const newGardenName={ name: e.target.value }
-        this.setState({newGarden: {...this.state.newGarden, newGardenName}})
+        this.setState({...this.state, newGarden: {...this.state.newGarden, newGardenName}})
     }
     // addNote(newNote) {
     //     this.setState({ toDoNotes: [...this.state.toDoNotes, newNote]})
@@ -20,7 +22,7 @@ class GardenCard extends React.Component {
     createGarden=(e)=>{
         e.persist()
         e.preventDefault()
-        const gardenurl='http://localhost:3000/api/v1/gardens'
+        const gardenurl='https://localhost:3000/api/v1/gardens'
         const newGardenToBePosted={
             name: this.state.newGarden.name,
             user_id: this.state.newGarden.user_id,
@@ -30,13 +32,24 @@ class GardenCard extends React.Component {
             image: this.props.iamge
         }
 
-        fetch(gardenurl)
+        fetch(gardenurl,{
+            method: 'POST',
+            headers: {'content-type':'application/json',
+            'accept':'application/json'},
+            body:   JSON.stringify(
+                newGardenToBePosted
+            )
+        })
+        .then( this.setState({...this.state, redirect: "/plants"}))
     }
 
     render(){
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+          }
     return (
         <div className="App">
-            <form onClick={this.createGarden} onChange={this.handleChange}>
+            <form onChange={this.handleChange}>
                 <h1>{this.props.name}</h1>
                 <img src={this.props.image} alt={this.props.name}/>
                 <br></br>
@@ -44,7 +57,7 @@ class GardenCard extends React.Component {
                 <h4>{this.props.category}</h4>
                 <h4>Buy Price: {this.props.price}</h4>
                 <h4>Sell Price: {this.props.sellprice}</h4>
-                <button>Purchase</button>
+                <button onClick={this.createGarden}>Purchase</button>
             </form>
         </div>
       );

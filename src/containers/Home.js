@@ -12,6 +12,7 @@ class Home extends React.Component {
         }
     }
 
+
     gardentemplateurl='http://localhost:3000/api/v1/gardentemplates'
 
     gardenurl='http://localhost:3000/api/v1/gardens'
