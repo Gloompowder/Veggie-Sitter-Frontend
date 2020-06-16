@@ -4,8 +4,7 @@ import { Redirect } from "react-router-dom"
 class GardenCard extends React.Component {
     state={
         newGarden:{
-            name:"",
-            user_id: this.props.currentUser.id
+            name:""
         },
         redirect: null
     }
@@ -13,6 +12,7 @@ class GardenCard extends React.Component {
     handleChange=(e)=>{
         e.persist()
         e.preventDefault()
+        console.log(this.props.currentUser)
         const newGardenName={ name: e.target.value }
         this.setState({...this.state, newGarden: {...this.state.newGarden, newGardenName}})
     }
@@ -22,20 +22,20 @@ class GardenCard extends React.Component {
     createGarden=(e)=>{
         e.persist()
         e.preventDefault()
-        const gardenurl='https://localhost:3000/api/v1/gardens'
+        const gardenurl='http://localhost:3000/api/v1/gardens'
         const newGardenToBePosted={
             name: this.state.newGarden.name,
-            user_id: this.state.newGarden.user_id,
+            user_id: this.props.currentUser.id,
             category: this.props.category,
             sellprice: this.props.sellprice,
             price: this.props.price,
-            image: this.props.iamge
+            image: this.props.image
         }
 
         fetch(gardenurl,{
             method: 'POST',
-            headers: {'content-type':'application/json',
-            'accept':'application/json'},
+            headers: {'Content-type':'application/json',
+            'Accept':'application/json'},
             body:   JSON.stringify(
                 newGardenToBePosted
             )
