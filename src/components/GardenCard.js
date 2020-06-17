@@ -13,7 +13,8 @@ class GardenCard extends React.Component {
         e.persist()
         e.preventDefault()
         const newGardenName={ name: e.target.value }
-        this.setState({...this.state, newGarden: {...this.state.newGarden, newGardenName}})
+        console.log(newGardenName)
+        this.setState({...this.state, newGarden: newGardenName})
     }
     // addNote(newNote) {
     //     this.setState({ toDoNotes: [...this.state.toDoNotes, newNote]})
@@ -39,7 +40,7 @@ class GardenCard extends React.Component {
                 newGardenToBePosted
             )
         })
-        .then( this.setState({...this.state, redirect: "/plants"}))
+        // .then( this.setState({...this.state, redirect: "/plants"}))
     }
 
     render(){

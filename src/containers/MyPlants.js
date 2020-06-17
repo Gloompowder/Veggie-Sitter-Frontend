@@ -33,11 +33,14 @@ class MyPlants extends React.Component {
         const plantNameHash= Object.keys(plantHash)
         plantNameHash.map(
             (plant) => {
-                plantArray.push({plant : plantHash[plant]})
+                plantArray.push({[plant] : plantHash[plant]})
             }
         )
         return(
-            plantArray.map(plant_plus_number =><MyPlantCard plantCount={plant_plus_number}/>)
+            <div className="my-plants">
+                <h1>My Plants:</h1>
+                {plantArray.map((plant_plus_number, index) =><MyPlantCard key={index} plantCount={plant_plus_number}/>)}
+            </div>
         )
     }
 }

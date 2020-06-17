@@ -1,6 +1,8 @@
 import React from 'react';
 import Gardenshop from '../containers/Gardenshop.js';
 import MyPlants from '../containers/MyPlants.js';
+// import { Route } from 'react-router-dom'
+import PlantShop from '../containers/PlantShop.js';
 
 class Home extends React.Component {
 
@@ -57,8 +59,10 @@ class Home extends React.Component {
 
     
     render(){
+        console.log(this.state.planttemplates)
         return (
             <div className="Home">
+                <PlantShop plants = {this.state.planttemplates}/>
                 <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
                 {/* 
                 IF ACTIVERECORD DOESNT WORK: HOW TO FIND MY INVENTORY
@@ -88,6 +92,7 @@ class Home extends React.Component {
                 15. this will delete the dirt patch, with they can create using a different button for 2 dollars. 
                 */}
                 <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser} plants={this.state.planttemplates}/>
+                {/* <Route path= "/plants" render= {routerProps => <PlantShop  {...routerProps} plants = {this.state.planttemplates} />}/> */}
             </div>
           );
     }

@@ -10,7 +10,8 @@ class App extends React.Component {
   state={
     currentUser: {
     },
-    userPlants: []
+    userPlants: [],
+    userGarden:{}
   }
   
   url='http://localhost:3000/api/v1/users'
@@ -19,20 +20,19 @@ class App extends React.Component {
   componentDidMount(){
     fetch(this.url)
     .then(r=>r.json())
-    .then(userData=> this.setState({ currentUser: userData[0].user, userPlants: userData[0].plants}))
+    .then(userData=> this.setState({ currentUser: userData[0].user, userPlants: userData[0].plants, userGarden: userData[0].gardens}))
     // this.setState({this.state.currentUser.name})
 
 
   }
 
   render(){
-    console.log(this.state.currentUser, this.state.userPlants)
+    console.log(this.state.userGarden[0])
     return (
       <div className="App">
         <Nav> </Nav>
         <Switch>
           <Route exact path="/" render={routerProps =><Home {...routerProps} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants}/>}/>
-          <Route path= "/plants" render= {routerProps => <PlantShop  {...routerProps} plants = {this.state.plants} />}/>
         </Switch>
       </div>
     );
