@@ -12,7 +12,6 @@ class GardenCard extends React.Component {
     handleChange=(e)=>{
         e.persist()
         e.preventDefault()
-        console.log(this.props.currentUser)
         const newGardenName={ name: e.target.value }
         this.setState({...this.state, newGarden: {...this.state.newGarden, newGardenName}})
     }
