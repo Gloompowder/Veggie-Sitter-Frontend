@@ -3,6 +3,27 @@ import React from 'react'
 
 class PlantCard extends React.Component {
 
+    createReceipt=(e)=>{
+        e.persist()
+        e.preventDefault()
+        const receipturl='http://localhost:3000/api/v1/receipts'
+        const newReceipt={
+            plant_id: this.props.id,
+            user_id: this.props.currentUser.id
+        }
+
+        fetch(receipturl ,{
+            method: 'POST',
+            headers: {'Content-type':'application/json',
+            'Accept':'application/json'},
+            body:   JSON.stringify(
+               newReceipt
+            )
+        })
+        .then(res => res.json())
+        .then(plant => this.props.updatePlantState(plant))
+        // .then( this.setState({...this.state, redirect: "/plants"}))
+    }
 
 
     render(){
@@ -14,7 +35,7 @@ class PlantCard extends React.Component {
                 <img src={this.props.image} alt={this.props.name}/>
                 <h4>Buy Price: {this.props.price}</h4>
                 <h4>Sell Price: {this.props.sellprice}</h4>
-                <button>Purchase</button>
+                <button onClick={this.createReceipt}>Purchase</button>
             </form>
         </div>
         );

@@ -59,10 +59,9 @@ class Home extends React.Component {
 
     
     render(){
-        console.log(this.state.planttemplates)
         return (
             <div className="Home">
-                <PlantShop plants = {this.state.planttemplates}/>
+                <PlantShop updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>
                 <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
                 {/* 
                 IF ACTIVERECORD DOESNT WORK: HOW TO FIND MY INVENTORY
