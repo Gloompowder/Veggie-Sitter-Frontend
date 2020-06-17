@@ -3,6 +3,7 @@ import Gardenshop from '../containers/Gardenshop.js';
 import MyPlants from '../containers/MyPlants.js';
 // import { Route } from 'react-router-dom'
 import PlantShop from '../containers/PlantShop.js';
+import MyGarden from '../containers/MyGarden.js'
 
 class Home extends React.Component {
 
@@ -62,6 +63,7 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <PlantShop updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>
+                <MyGarden myGarden={this.props.currentUserGarden}/>
                 <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
                 {/* 
                 IF ACTIVERECORD DOESNT WORK: HOW TO FIND MY INVENTORY

@@ -35,7 +35,7 @@ class App extends React.Component {
       <div className="App">
         <Nav> </Nav>
         <Switch>
-          <Route exact path="/" render={routerProps =><Home {...routerProps} updatePlantState = {this.updatePlantState} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants}/>}/>
+          <Route exact path="/" render={routerProps =><Home {...routerProps} updatePlantState = {this.updatePlantState} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants} currentUsergarden={this.state.userGarden}/>}/>
         </Switch>
       </div>
     );
