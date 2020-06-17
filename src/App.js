@@ -27,12 +27,12 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state.userGarden[0])
+    console.log(this.state.userGarden)
     return (
       <div className="App">
         <Nav> </Nav>
         <Switch>
-          <Route exact path="/" render={routerProps =><Home {...routerProps} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants}/>}/>
+          <Route exact path="/" render={routerProps =><Home {...routerProps} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants} currentUsergarden={this.state.userGarden}/>}/>
         </Switch>
       </div>
     );
