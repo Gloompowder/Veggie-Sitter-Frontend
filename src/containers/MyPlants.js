@@ -30,7 +30,8 @@ class MyPlants extends React.Component {
                 plantHash[plant.name] = 1
             }
         })
-        Object.keys(plantHash).map(
+        const plantNameHash= Object.keys(plantHash)
+        plantNameHash.map(
             (plant) => {
                 plantArray.push({plant : plantHash[plant]})
             }

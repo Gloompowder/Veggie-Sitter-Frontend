@@ -87,7 +87,7 @@ class Home extends React.Component {
                 14. if they decide to sell, they will increment the currentUser's money by the sellprice of the plant that was highlighted.
                 15. this will delete the dirt patch, with they can create using a different button for 2 dollars. 
                 */}
-                <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser} plants={this.state.plants}/>
+                <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser} plants={this.state.planttemplates}/>
             </div>
           );
     }
