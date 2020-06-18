@@ -1,7 +1,7 @@
 import React from 'react';
 import Gardenshop from '../containers/Gardenshop.js';
 import MyPlants from '../containers/MyPlants.js';
-// import { Route } from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import PlantShop from '../containers/PlantShop.js';
 import MyGarden from '../containers/MyGarden.js'
 
@@ -35,7 +35,7 @@ class Home extends React.Component {
 
         fetch(this.gardenurl)
         .then(r=>r.json())
-        .then(gardenData=>this.setState({...this.state, gardens: gardenData}))
+        .then(gardenData=>this.setState({...this.state, gardens: gardenData[0]}))
 
         fetch(this.planttemplateurl)
         .then(r=>r.json())
@@ -46,9 +46,10 @@ class Home extends React.Component {
     render(){
         return (
             <div className="Home">
-                <PlantShop updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>
-                <MyGarden myGarden={this.props.currentUserGarden}/>
-                <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
+                    <PlantShop updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>
+                    <MyGarden myGarden={this.props.currentUserGarden} MyGardenPlants={this.state.gardens.gardenPlants}/>
+                    <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
+        
                 {/* 
                 IF ACTIVERECORD DOESNT WORK: HOW TO FIND MY INVENTORY
                 pass down all of the models as props, compare receipt instance user_id attributes for a user_id that matches the id of the current user,

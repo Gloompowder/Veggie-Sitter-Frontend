@@ -15,7 +15,7 @@ class App extends React.Component {
   }
   
   url='http://localhost:3000/api/v1/users'
-  planturl= 'http://localhost:3000/api/v1/plants'
+  gardenurl='http://localhost:3000/api/v1/gardens'
 
   componentDidMount(){
     fetch(this.url)
@@ -34,7 +34,11 @@ class App extends React.Component {
       <div className="App">
         <Nav> </Nav>
         <Switch>
-          <Route exact path="/" render={routerProps =><Home {...routerProps} updatePlantState = {this.updatePlantState} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants} currentUserGarden={this.state.userGarden}/>}/>
+          <Route exact path="/" render={routerProps =><Home {...routerProps} 
+          updatePlantState = {this.updatePlantState} 
+          currentUser={this.state.currentUser} 
+          currentUserPlants={this.state.userPlants} 
+          currentUserGarden={this.state.userGarden}/>}/>
         </Switch>
       </div>
     );
