@@ -5,11 +5,14 @@ class MyGarden extends React.Component {
    
         return (
             <div className="my-garden">
-                <h4>This is a single garden card.</h4>
-                <h3></h3>
+                <h4>{this.props.name}</h4>
+                <img src= {this.props.image} alt= {this.props.name}/> 
+                <p> {this.props.price} </p>
+                <p> {this.props.sellprice} </p>
             </div>
           );
     }
 }
 
 export default MyGarden;
+

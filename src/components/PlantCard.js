@@ -1,7 +1,13 @@
 import React from 'react'
+import { Redirect } from "react-router-dom"
 
 
 class PlantCard extends React.Component {
+
+    state={
+    
+        redirect: null
+    }
 
     createReceipt=(e)=>{
         e.persist()
@@ -22,11 +28,17 @@ class PlantCard extends React.Component {
         })
         .then(res => res.json())
         .then(plant => this.props.updatePlantState(plant))
-        // .then( this.setState({...this.state, redirect: "/plants"}))
+    }
+
+    handleClick = () => {
+        this.setState({redirect: "/mygarden"})
     }
 
 
     render(){
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+          }
     return (
         <div className="Plant">
             <form>
@@ -35,7 +47,7 @@ class PlantCard extends React.Component {
                 <img src={this.props.image} alt={this.props.name}/>
                 <h4>Buy Price: {this.props.price}</h4>
                 <h4>Sell Price: {this.props.sellprice}</h4>
-                <button onClick={this.createReceipt}>Purchase</button>
+                <button onClick={this.createReceipt} onClick = {this.handleClick}>Purchase</button>
             </form>
         </div>
         );
