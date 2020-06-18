@@ -11,7 +11,8 @@ class App extends React.Component {
     currentUser: {
     },
     userPlants: [],
-    userGarden:{}
+    userGarden:{},
+    receipts: []
   }
   
   url='http://localhost:3000/api/v1/users'
@@ -24,13 +25,16 @@ class App extends React.Component {
     // this.setState({this.state.currentUser.name}
   }
 
-  updatePlantState =(plant) => {
-    this.setState({ userPlants: [...this.state.userPlants, plant]})
+  updatePlantState =(receipt) => {
+    this.setState({ receipts: [...this.state.receipts, receipt]})
+    fetch(this.url)
+    .then(r=>r.json())
+    .then(userData=> this.setState({ currentUser: userData[0].user, userPlants: userData[0].plants, userGarden: userData[0].gardens}))
   }
 
 
   render(){
-    console.log(this.state.userPlants)
+    
     return (
       <div className="App">
         <Nav> </Nav>
