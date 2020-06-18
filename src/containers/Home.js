@@ -5,6 +5,8 @@ import { Route, Switch} from 'react-router-dom'
 import PlantShop from '../containers/PlantShop.js';
 import MyGarden from '../containers/MyGarden.js'
 
+
+
 class Home extends React.Component {
 
     state={
@@ -63,9 +65,10 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <Switch>
-                    <PlantShop updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>
-                    <MyGarden myGarden={this.props.currentUsergarden}/>
-                    <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
+                    <Route path="/" render={routerProps => <Gardenshop {...routerProps} gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser} plants={this.state.planttemplates}/>}/>
+                    <Route path = "/plants" render={routerProps => <PlantShop {...routerProps} updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>}/>
+                    <Route path = "/mygarden" render= {routerProps => <MyGarden {...routerProps} myGarden={this.props.currentUsergarden}/>}/>
+                    <Route exact path= "/myplants" render={routerProps => <MyPlants {...routerProps} currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>}/>
                 </Switch>
         
                 {/* 
@@ -95,7 +98,7 @@ class Home extends React.Component {
                 14. if they decide to sell, they will increment the currentUser's money by the sellprice of the plant that was highlighted.
                 15. this will delete the dirt patch, with they can create using a different button for 2 dollars. 
                 */}
-                <Gardenshop gardentemplates={this.state.gardentemplates} currentUser={this.props.currentUser} plants={this.state.planttemplates}/>
+            
                 {/* <Route path= "/plants" render= {routerProps => <PlantShop  {...routerProps} plants = {this.state.planttemplates} />}/> */}
             </div>
           );

@@ -40,7 +40,7 @@ class GardenCard extends React.Component {
                 newGardenToBePosted
             )
         })
-        // .then( this.setState({...this.state, redirect: "/plants"}))
+        .then( this.setState({...this.state, redirect: "/plants"}))
     }
 
     render(){

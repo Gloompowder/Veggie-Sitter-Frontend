@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import Home from './containers/Home'
-import PlantShop from './containers/PlantShop'
 import Nav from './components/NavBar'
-import { Route, Switch} from 'react-router-dom'
-import MyPlants from './components/MyPlantCard';
+import { Route} from 'react-router-dom'
+
+
 
 class App extends React.Component {
   state={
@@ -38,9 +38,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Nav> </Nav>
-        <Switch>
           <Route exact path="/" render={routerProps =><Home {...routerProps} updatePlantState = {this.updatePlantState} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants} currentUsergarden={this.state.userGarden}/>}/>
-        </Switch>
       </div>
     );
   }

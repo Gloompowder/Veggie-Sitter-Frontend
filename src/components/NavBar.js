@@ -12,7 +12,7 @@ const Nav = props => {
                         
             {/* <Logo to="/">Veggie Sitter  </Logo> */}
 
-            <Link to="/plants">Buy Plants</Link>
+            {/* <Link Buy Plants</Link> */}
             {/* {props.loggedInDog ? <StyledLink to={`/dogs/${props.loggedInDog.id}`}>My Profile</StyledLink> : null} */}
           
 
