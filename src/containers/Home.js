@@ -29,13 +29,13 @@ class Home extends React.Component {
     planttemplateurl='http://localhost:3000/api/v1/planttemplates'
 
     componentDidMount(){
-        fetch(this.gardentemplateurl)
-        .then(r=>r.json())
-        .then(gardenTempData=>this.setState({...this.state, gardentemplates: gardenTempData}))
-
         fetch(this.gardenurl)
         .then(r=>r.json())
         .then(gardenData=>this.setState({...this.state, gardens: gardenData[0]}))
+        
+        fetch(this.gardentemplateurl)
+        .then(r=>r.json())
+        .then(gardenTempData=>this.setState({...this.state, gardentemplates: gardenTempData}))
 
         fetch(this.planttemplateurl)
         .then(r=>r.json())
