@@ -30,12 +30,11 @@ class App extends React.Component {
 
 
   render(){
-    console.log(this.state.userPlants)
     return (
       <div className="App">
         <Nav> </Nav>
         <Switch>
-          <Route exact path="/" render={routerProps =><Home {...routerProps} updatePlantState = {this.updatePlantState} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants} currentUsergarden={this.state.userGarden}/>}/>
+          <Route exact path="/" render={routerProps =><Home {...routerProps} updatePlantState = {this.updatePlantState} currentUser={this.state.currentUser} currentUserPlants={this.state.userPlants} currentUserGarden={this.state.userGarden}/>}/>
         </Switch>
       </div>
     );

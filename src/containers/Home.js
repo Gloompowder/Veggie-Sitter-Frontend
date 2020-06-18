@@ -26,11 +26,7 @@ class Home extends React.Component {
 
     gardenurl='http://localhost:3000/api/v1/gardens'
 
-    planturl='http://localhost:3000/api/v1/plants'
-
     planttemplateurl='http://localhost:3000/api/v1/planttemplates'
-
-    receipturl='http://localhost:3000/api/v1/receipts'
 
     componentDidMount(){
         fetch(this.gardentemplateurl)
@@ -41,21 +37,9 @@ class Home extends React.Component {
         .then(r=>r.json())
         .then(gardenData=>this.setState({...this.state, gardens: gardenData}))
 
-        fetch(this.planturl)
-        .then(r=>r.json())
-        .then(plantData=>this.setState({...this.state, plants: plantData}))
-
         fetch(this.planttemplateurl)
         .then(r=>r.json())
         .then(plantTemplateData=>this.setState({...this.state, planttemplates: plantTemplateData}))
-
-        fetch(this.receipturl)
-        .then(r=>r.json())
-        .then(receiptData=>this.setState({...this.state, receipts: receiptData}))
-
-        fetch(this.ploturl)
-        .then(r=>r.json())
-        .then(plotData=>this.setState({...this.state, plots: plotData}))
     }
 
     
@@ -63,7 +47,7 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <PlantShop updatePlantState = {this.props.updatePlantState} plants = {this.state.planttemplates} currentUser = {this.props.currentUser}/>
-                <MyGarden myGarden={this.props.currentUsergarden}/>
+                <MyGarden myGarden={this.props.currentUserGarden}/>
                 <MyPlants currentUser={this.props.currentUser} currentUserPlants={this.props.currentUserPlants}/>
                 {/* 
                 IF ACTIVERECORD DOESNT WORK: HOW TO FIND MY INVENTORY
