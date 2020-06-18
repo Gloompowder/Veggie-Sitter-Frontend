@@ -6,11 +6,12 @@ class MyGarden extends React.Component {
         console.log(this.props.MyGardenPlants)
         return (
             <div className="my-garden">
-                <h1>Welcome to {this.props.myGarden.name}!</h1>
+                {/* <h1>Welcome to {this.props.myGarden.name}!</h1>
                 {this.props.MyGardenPlants.map(plant=><MyGardenCard 
                 key={plant.id} 
                 {...plant}/>
-                )}
+                )} */}
+                <MyGardenCard />
             </div>
           );
     }

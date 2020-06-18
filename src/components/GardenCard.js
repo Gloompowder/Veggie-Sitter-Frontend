@@ -48,16 +48,20 @@ class GardenCard extends React.Component {
             return <Redirect to={this.state.redirect} />
           }
     return (
-        <div className="App">
+        <div>
             <form onChange={this.handleChange}>
+                <div className="garden-card">
                 <h1>{this.props.name}</h1>
                 <img src={this.props.image} alt={this.props.name}/>
+                <div className='whitebox'>
                 <br></br>
                 <input type="text_field" name="name" placeholder="Garden Name" />
                 <h4>{this.props.category}</h4>
                 <h4>Buy Price: {this.props.price}</h4>
                 <h4>Sell Price: {this.props.sellprice}</h4>
                 <button onClick={this.createGarden}>Purchase</button>
+                </div>
+                </div>
             </form>
         </div>
       );
